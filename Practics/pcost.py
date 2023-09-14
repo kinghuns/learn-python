@@ -36,7 +36,25 @@ def read_portfolio_dict_list(filename):
                        headers[2]:float(row[2])}
             portfolio.append(holding)
         f.close()
-    return portfolio                
+    return portfolio         
+
+def read_prices(filename):
+    prices = []
+
+    with open(filename, 'rt') as f:
+        rows = csv.reader(f)
+        # headers = next(rows)
+        for row in rows:
+            try:
+                holding = {row[0]:float(row[1])}
+                print(holding)
+                prices.append(holding)
+            except:
+                pass
+        f.close
+    return prices
+
+
 
 # print('open file with gzip:\n')
 # with gzip.open('Data/portfolio.csv.gz', 'rt') as f1:
@@ -46,16 +64,20 @@ def read_portfolio_dict_list(filename):
 # cost = portfolio_cost('Data/portfolio.csv')
 # print('Total cost:', cost)
 
-portfolio = read_portfolio_dict_list('Data/portfolio.csv')
-print(portfolio[0])
+# portfolio = read_portfolio_dict_list('Data/portfolio.csv')
+# print(portfolio[0])
 
-# total = 0.0
-# for name, shares, price in portfolio:
-#             total += shares*price
+# # total = 0.0
+# # for name, shares, price in portfolio:
+# #             total += shares*price
 
-# print(total)
-print(portfolio)
-
+# # print(total)
+# print(portfolio)
+# prices = read_prices('G:/dev/python/learn-python-l01/Practics/Data/prices.csv')
+root = os.getcwd()
+print(root)
+prices = read_prices('Data/prices.csv')
+print(prices)
 
 
 
