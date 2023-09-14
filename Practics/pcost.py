@@ -1,22 +1,62 @@
 import gzip
 import os
+import csv
 
-def portfolio_cost(filename):
-    f = open(filename, 'rt')
-    headers = next(f).split(',')
-    total_cost = 0.0
-    for line in f:
-        row = line.split(',')
-        row[2] = row[2].strip()
-        total_cost += int(row[1]) * float(row[2])
-    f.close()
-    return total_cost
+# def portfolio_cost(filename):
+#     f = open(filename, 'rt')
+#     headers = next(f).split(',')
+#     total_cost = 0.0
+#     for line in f:
+#         row = line.split(',')
+#         row[2] = row[2].strip()
+#         total_cost += int(row[1]) * float(row[2])
+#     f.close()
+#     return total_cost
+
+def read_portfolio(filename):
+    portfolio = []
+    with open(filename, 'rt') as f:
+        rows = csv.reader(f)
+        headers = next(rows)
+        for row in rows:
+            holding = (row[0], int(row[1]), float(row[2]))
+            portfolio.append(holding)
+        f.close()
+    return portfolio
+
+def read_portfolio_dict_list(filename):
+    portfolio = []
+    with open(filename, 'rt') as f:
+        rows = csv.reader(f)
+        headers = next(rows)
+        print(headers)
+        for row in rows:
+            holding = {headers[0]:row[0], 
+                       headers[1]:int(row[1]),
+                       headers[2]:float(row[2])}
+            portfolio.append(holding)
+        f.close()
+    return portfolio                
 
 # print('open file with gzip:\n')
 # with gzip.open('Data/portfolio.csv.gz', 'rt') as f1:
 #     for line in f1:
 #         print(line)
 # f1.close()
-cost = portfolio_cost('Data/portfolio.csv')
-print('Total cost:', cost)
+# cost = portfolio_cost('Data/portfolio.csv')
+# print('Total cost:', cost)
+
+portfolio = read_portfolio_dict_list('Data/portfolio.csv')
+print(portfolio[0])
+
+# total = 0.0
+# for name, shares, price in portfolio:
+#             total += shares*price
+
+# print(total)
+print(portfolio)
+
+
+
+
 
