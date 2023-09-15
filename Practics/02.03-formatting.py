@@ -96,7 +96,9 @@ print(report)
 print(f'{headers[0]:^10s} {headers[1]:^10s} {headers[2]:^10s} {headers[3]:^10s}')
 print(('-' * 10 + ' ') * len(headers))
 for name, shares, price, change in report:
-        print(f'{name:^10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
+        price = '%0.2f' % float(price)
+        price = '$' + price 
+        print(f'{name:^10s} {shares:>10d} {price:>10s} {change:>10.2f}')
 # for name, shares, price, change in report:
 #         print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
 
