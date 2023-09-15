@@ -47,7 +47,7 @@ def read_prices(filename):
         for row in rows:
             try:
                 holding = {row[0]:float(row[1])}
-                print(holding)
+                # print(holding)
                 prices.append(holding)
             except:
                 pass
@@ -63,9 +63,11 @@ def read_prices(filename):
 # f1.close()
 # cost = portfolio_cost('Data/portfolio.csv')
 # print('Total cost:', cost)
+root = os.getcwd()
+print(root)
 
-# portfolio = read_portfolio_dict_list('Data/portfolio.csv')
-# print(portfolio[0])
+portfolio = read_portfolio_dict_list('Practics/Data/portfolio.csv')
+print(portfolio)
 
 # # total = 0.0
 # # for name, shares, price in portfolio:
@@ -74,9 +76,8 @@ def read_prices(filename):
 # # print(total)
 # print(portfolio)
 # prices = read_prices('G:/dev/python/learn-python-l01/Practics/Data/prices.csv')
-root = os.getcwd()
-print(root)
-prices = read_prices('Data/prices.csv')
+
+prices = read_prices('Practics/Data/prices.csv')
 print(prices)
 
 
