@@ -21,7 +21,7 @@ def portfolio_cost(filename):
                 total_cost += nshares * price
             # This catches errors in int() and float() conversions above
             except ValueError:
-                print( Fore.RED + f'Row {rowno}: Bad row: {row}')
+                print(Fore.RED + f'Row {rowno}: Bad row: {row}')
                 print(Style.RESET_ALL)
 
     return total_cost
@@ -33,6 +33,7 @@ def portfolio_cost(filename):
 # else:
 #     filename = input('Enter a filename:')
 
-# cost = portfolio_cost('Practics/Data/missing.csv')
+cost = portfolio_cost('Practics/Data/missing.csv')
+print('Total cost:', cost)
 cost = portfolio_cost('Practics/Data/portfoliodate.csv')
 print('Total cost:', cost)

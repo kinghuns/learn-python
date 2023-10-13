@@ -1,6 +1,7 @@
 import gzip
 import os
 import csv
+from collections import Counter
 
 def read_portfolio(filename):
     portfolio = []
@@ -76,31 +77,31 @@ def make_report_data(portfolio, prices):
 root = os.getcwd()
 # print(root)
 
-portfolio = read_portfolio_dict_list('Practics/Data/portfolio.csv')
-print(portfolio)
+# portfolio = read_portfolio_dict_list('Practics/Data/portfolio.csv')
+# print(portfolio)
 
-prices = read_prices('Practics/Data/prices.csv')
-# print(prices)
+# prices = read_prices('Practics/Data/prices.csv')
+# # print(prices)
 
-headers = ('Name', 'Shares', 'Price', 'Change')
-print('%10s %10s %10s %10s' % headers)
-print(('-' * 10 + ' ') * len(headers))
+# headers = ('Name', 'Shares', 'Price', 'Change')
+# print('%10s %10s %10s %10s' % headers)
+# print(('-' * 10 + ' ') * len(headers))
 
-report =  make_report_data(portfolio, prices)
+# report =  make_report_data(portfolio, prices)
 
-for row in report:
-    print('%10s %10d %10.2f %10.2f' % row)
+# for row in report:
+#     print('%10s %10d %10.2f %10.2f' % row)
 
 
-print(report)
-print(f'{headers[0]:^10s} {headers[1]:^10s} {headers[2]:^10s} {headers[3]:^10s}')
-print(('-' * 10 + ' ') * len(headers))
-for name, shares, price, change in report:
-        price = '%0.2f' % float(price)
-        price = '$' + price 
-        print(f'{name:^10s} {shares:>10d} {price:>10s} {change:>10.2f}')
+# print(report)
+# print(f'{headers[0]:^10s} {headers[1]:^10s} {headers[2]:^10s} {headers[3]:^10s}')
+# print(('-' * 10 + ' ') * len(headers))
 # for name, shares, price, change in report:
-#         print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
+#         price = '%0.2f' % float(price)
+#         price = '$' + price 
+#         print(f'{name:^10s} {shares:>10d} {price:>10s} {change:>10.2f}')
+# # for name, shares, price, change in report:
+# #         print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
 
 # # Calculate the total cost of the portfolio
 # total_cost = 0.0
@@ -115,6 +116,27 @@ for name, shares, price, change in report:
 #     total_value += s['shares']*prices[s['name']]
 
 # print('Current value', total_value)
-# print('Gain', total_value - total_cost)
+# print('Gain: %10.2f' %(total_value - total_cost))
 
+#02.05 Collections
+portfolio = read_portfolio_dict_list('Practics/Data/portfolio.csv')
+
+holdings = Counter()
+
+for s in portfolio:
+        holdings[s['name']] += s['shares']
+print(holdings)
+
+print(holdings['IBM'])
+print(holdings['MSFT'])
+print(holdings.most_common(3))
+
+portfolio2 = read_portfolio_dict_list('Practics/Data/portfolio2.csv')
+holdings2 = Counter()
+for s in portfolio2:
+    holdings2[s['name']] += s['shares']
+print(holdings2)
+
+combined = holdings + holdings2
+print(combined)
 

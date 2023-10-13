@@ -36,20 +36,20 @@ def read_prices(filename):
 
     return prices
 
-portfolio = read_portfolio('../../Work/Data/portfolio.csv')
-prices    = read_prices('../../Work/Data/prices.csv')
+# portfolio = read_portfolio('../../Work/Data/portfolio.csv')
+# prices    = read_prices('../../Work/Data/prices.csv')
 
-# Calculate the total cost of the portfolio
-total_cost = 0.0
-for s in portfolio:
-    total_cost += s['shares']*s['price']
+# # Calculate the total cost of the portfolio
+# total_cost = 0.0
+# for s in portfolio:
+#     total_cost += s['shares']*s['price']
 
-print('Total cost', total_cost)
+# print('Total cost', total_cost)
 
-# Compute the current value of the portfolio
-total_value = 0.0
-for s in portfolio:
-    total_value += s['shares']*prices[s['name']]
+# # Compute the current value of the portfolio
+# total_value = 0.0
+# for s in portfolio:
+#     total_value += s['shares']*prices[s['name']]
 
-print('Current value', total_value)
-print('Gain', total_value - total_cost)
+# print('Current value', total_value)
+# print('Gain', total_value - total_cost)

@@ -55,7 +55,6 @@ def read_prices(filename):
     return prices
 
 
-
 # print('open file with gzip:\n')
 # with gzip.open('Data/portfolio.csv.gz', 'rt') as f1:
 #     for line in f1:
