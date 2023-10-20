@@ -13,4 +13,8 @@ portfolio_prices = { name: prices[name] for name in names }
 ```
 
 10.20 [list comprehension](https://github.com/kinghuns/learn-python/blob/main/Notes/02_Working_with_data/06_List_comprehension.md)
+The general syntax is: [ <expression> for <variable_name> in <sequence> ].
+在之前列表的基础上生成一个新的列表。
+- 可以增加过滤条件（类似for循环）
+
 
