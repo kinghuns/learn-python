@@ -12,3 +12,5 @@ for s in portfolio:
 portfolio_prices = { name: prices[name] for name in names }
 ```
 
+10.20 [list comprehension](https://github.com/kinghuns/learn-python/blob/main/Notes/02_Working_with_data/06_List_comprehension.md)
+
